@@ -74,6 +74,10 @@ app.post("/zmones/save", async (req, res) => {
     res.redirect("/zmones");
     return;
   }
+if (req.body.gimimoData === "") {
+
+}
+
   req.body.gimimoData = new Date(req.body.gimimoData);
   if (!isFinite(req.body.gimimoData.getTime())) {
     res.redirect("/zmones");
@@ -100,57 +104,44 @@ app.post("/zmones/save", async (req, res) => {
 });
 
 app.get("/zmogus/:id/delete", async (req, res) => {
+  res.type("text/html");
+  try {
+   await deleteZmogus
+  /*
   try {
     const zmones = await getZmogus(req.params.id);
-    if (zmones.length > 0) {
-      res.render("zmogus", zmones[0]);
-    } else {
-      res.redirect("/zmones");
+        let id = parseInt(await inputText("Ivesk id: "));
+if (isFinite(id)) {
+    try {
+        await dbQuery(conn, "delete from zmones where id = ?", [id]);
+    } catch (err) {
+        console.log("Klaida: ", err);
     }
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
-  }
+} else {
+    console.log("Blogai ivesti duomenys");
+}
+} catch (err) {
+  console.log(err);
+  res.status(500).send(err);
+}
 });
+*/
 
-    const index = zmones.findIndex((z) => z.id === id);
-
-    if (index >= 0) {
-      zmones.splice(index, 1);
-      await writeFile(DATA_FILE, JSON.stringify(zmones, null, 2), {
-        encoding: "utf-8",
-      });
-    }
-
-    res.redirect("/");
-  } catch (err) {
-    res.status(500).end(
-      `<html><body>Ivyko klaida: ${err.message}</body></html>`,
-    );
-  }
-});
-
-app.get("/zmones/:id", async (req, res) => {
+app.get("/zmones/:id/kontaktai", async (req, res) => {
   res.type("text/html");
   try {
     const zmones = await getZmogus(req.params.id);
     if (zmones.length > 0) {
       res.render("zmogus", zmones[0]);
     } else {
-      res.redirect("/zmones");
+      res.re
+      direct("/zmones");
     }
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
   }
 });
-
-
-
-
-
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

@@ -121,5 +121,19 @@ async function saveZmogus(id, vardas, pavarde, gimimoData, alga) {
     }
   }
 }
+/*
+async function deleteZmogus(id) {
+  id = parseInt(id);
+  if (isFinite(id)) {
+    let conn;
+    try {
+      conn = await dbConnect();
+      let r = await dbQuery(
+        conn,
+        "select id, vardas, pavarde, gim_data as gimimoData, alga from zmones where id = ?",
+        [id],
+      );
+      return r.results;
+*/
 
 export { getZmogus, getZmones, saveZmogus };
