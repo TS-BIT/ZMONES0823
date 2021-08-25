@@ -9,7 +9,6 @@ import {
   getZmones,
   saveKontaktas,
   saveZmogus,
-  deleteKontaktas,
 } from "./db.js";
 
 const app = express();
@@ -201,18 +200,6 @@ app.post("/zmones/:zmogusId/kontaktai/save", async (req, res) => {
     res.status(500).send(err);
   }
 });
-
-app.get("/zmones/:zmogusId/kontaktai/:id/delete", async (req, res) => {
-  res.type("text/html");
-  try {
-    await deleteKpntaktas(req.params.id, req.params.zmogusId);
-    res.redirect("/zmones");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
-  }
-});
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

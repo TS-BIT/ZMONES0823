@@ -1,7 +1,7 @@
 import mysql from "mysql";
 
 const connectOptions = {
-  host: "localhost",
+  host: "192.168.1.2",
   user: "nodejs",
   password: "nodejs123456",
   database: "zmones",
@@ -224,31 +224,6 @@ async function saveKontaktas(id, zmogusId, tipas, reiksme) {
   }
 }
 
-async function deleteKontaktas(id, zmogusId) {
-  id = parseInt(id);
-  if (isFinite(id)) {
-    let conn;
-    try {
-      conn = await dbConnect();
-      let r = await dbQuery(
-        conn,
-        "delete from kontaktai set tipas = ?, reiksme = ? where id = ? and zmones_id = ?;",
-        [tipas, reiksme, id, zmogusId],
-      );
-      return r.results;
-    } finally {
-      try {
-        await dbDisconnect(conn);
-      } catch (err) {
-        // ignored
-      }
-    }
-  } else {
-    throw new Error("Bad id");
-  }
-}
-
-
 export {
   deleteZmogus,
   getKontaktai,
@@ -257,5 +232,4 @@ export {
   getZmones,
   saveKontaktas,
   saveZmogus,
-  deleteKontaktas,
 };
