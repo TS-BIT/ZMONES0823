@@ -208,7 +208,7 @@ app.get("/zmones/:zmogusId/kontaktai/:id/delete", async (req, res) => {
     const zmones = await getZmogus(req.params.zmogusId);
     if (zmones.length > 0) {
     await deleteKontaktas(req.params.id, req.params.zmogusId);
-    res.redirect(`/zmones/${req.params.zmogusId}/kontaktai/`);
+    res.redirect(`/zmones/${req.params.zmogusId}/kontaktai`);
   } else {
     res.redirect("/zmones");
   }

@@ -226,11 +226,11 @@ async function saveKontaktas(id, zmogusId, tipas, reiksme) {
 
 async function deleteKontaktas(id, zmogusId) {
   id = parseInt(id);
-  if (isFinite(id)) {
+  if (!isFinite(id)) {
     throw new Error("Bad id");
   }
-  zmogusID = parseINT(zmogusId);
-  if (isFinite(zmogusId)) {
+  zmogusId = parseInt(zmogusId);
+  if (!isFinite(zmogusId)) {
     throw new Error("Bad zmogusId");  
   }
     let conn;
