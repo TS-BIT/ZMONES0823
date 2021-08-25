@@ -2,6 +2,7 @@ import { default as express } from "express";
 import exphbs from "express-handlebars";
 
 import {
+  deleteKontaktas,
   deleteZmogus,
   getKontaktai,
   getKontaktas,
@@ -9,7 +10,6 @@ import {
   getZmones,
   saveKontaktas,
   saveZmogus,
-  deleteKontaktas,
 } from "./db.js";
 
 const app = express();
@@ -205,9 +205,14 @@ app.post("/zmones/:zmogusId/kontaktai/save", async (req, res) => {
 app.get("/zmones/:zmogusId/kontaktai/:id/delete", async (req, res) => {
   res.type("text/html");
   try {
-    await deleteKpntaktas(req.params.id, req.params.zmogusId);
+    const zmones = await getZmogus(req.params.zmogusId);
+    if (zmones.length > 0) {
+    await deleteKontaktas(req.params.id, req.params.zmogusId);
+    res.redirect(`/zmones/${req.params.zmogusId}/kontaktai/`);
+  } else {
     res.redirect("/zmones");
-  } catch (err) {
+  }
+ } catch (err) {
     console.log(err);
     res.status(500).send(err);
   }
