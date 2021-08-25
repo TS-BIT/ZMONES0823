@@ -232,7 +232,7 @@ async function deleteKontaktas(id, zmogusId) {
       conn = await dbConnect();
       let r = await dbQuery(
         conn,
-        "delete from kontaktai set tipas = ?, reiksme = ? where id = ? and zmones_id = ?;",
+        "delete from kontaktai where  id = ? and zmones_id = ?;",
         [tipas, reiksme, id, zmogusId],
       );
       return r.results;

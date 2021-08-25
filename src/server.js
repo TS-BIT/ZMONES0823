@@ -213,6 +213,8 @@ app.get("/zmones/:zmogusId/kontaktai/:id/delete", async (req, res) => {
   }
 });
 
+//app.get("/json/zmones")
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
