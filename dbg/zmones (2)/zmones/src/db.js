@@ -1,7 +1,7 @@
 import mysql from "mysql";
 
 const connectOptions = {
-  host: "localhost",
+  host: "192.168.1.2",
   user: "nodejs",
   password: "nodejs123456",
   database: "zmones",
