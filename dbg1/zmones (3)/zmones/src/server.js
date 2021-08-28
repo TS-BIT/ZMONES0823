@@ -231,7 +231,7 @@ app.get("/json/zmones", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send(JSON.stringify({
-      err
+      err,
     }));
   }
 });
@@ -248,7 +248,7 @@ app.get("/json/zmones/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send(JSON.stringify({
-      err
+      err,
     }));
   }
 });
@@ -261,7 +261,7 @@ app.delete("/json/zmones/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send(JSON.stringify({
-      err
+      err,
     }));
   }
 });
@@ -308,7 +308,7 @@ app.post("/json/zmones", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send(JSON.stringify({
-      err
+      err,
     }));
   }
 });
@@ -355,7 +355,7 @@ app.put("/json/zmones/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send(JSON.stringify({
-      err
+      err,
     }));
   }
 });
@@ -504,8 +504,6 @@ app.put("/json/zmones/:zmogusId/kontaktai/:id", async (req, res) => {
     }));
   }
 });
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
